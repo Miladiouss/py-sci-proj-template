@@ -1,0 +1,47 @@
+# Conda environment to run sci-proj
+# This file may be used to create an environment using:
+# $ conda env create --name <env> --file <this file>
+# $ conda env create -f <this file>
+# The packages on which this project directly depends
+#   plus ipykernel,
+#   test tools:
+#     pytest, flake8, pytest-flake8, pytest-openfiles
+#   data analysis / visualization tools:
+#     plotly, dash, dash-core-components, dash-html-components,
+#     dash-renderer, dash-table
+# For pip installed packages from git
+#     see https://pip.pypa.io/en/stable/reference/pip_install/#git
+name: sci-proj
+channels:
+    - conda-forge
+    - default
+dependencies:
+    - alive-progress
+    - astropy
+    - astropy-healpix
+    - autopep8
+    - bunch
+    - click
+    - dash
+    - dash-core-components
+    - dash-html-components
+    - dash-renderer
+    - dash-table
+    - deprecated
+    - flake8
+    - healpy
+    - ipykernel
+    - numpy
+    - pandas
+    - pip
+    - plotly
+    - pytest
+    - pytest-flake8
+    - pytest-openfiles
+    - pytest-xdist
+    - python >=3.8.5,<3.10
+    - pyyaml
+    - scipy
+    - pip:
+          # - git+https://github.com/lsst/daf_butler@main
+          # - git+https://github.com/lsst/pex_config@main

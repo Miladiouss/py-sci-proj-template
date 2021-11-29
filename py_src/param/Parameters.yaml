@@ -1,0 +1,25 @@
+category_A:
+    n_img:
+        name: Number of Images
+        value: 123
+        unit:
+        tags: [Training]
+        description: >
+            A made up parameter.
+            Possible usage: number of images to use for training a model.
+    t_run:
+        name: Training Duration
+        value: 10
+        unit: s
+        tags: [Training]
+        description: >
+            Another made up parameter indicating the training duration in seconds.
+category_B:
+    step_size:
+        name: Step Size
+        value: 2
+        unit: cm
+        tags: [Physics, Motion]
+        description: >
+            An example parameter in Category B.
+            Possible usage: step size for a random walk.

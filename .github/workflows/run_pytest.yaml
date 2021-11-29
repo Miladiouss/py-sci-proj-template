@@ -1,0 +1,68 @@
+name: build_and_test
+
+on:
+  - push
+
+jobs:
+  build_and_test:
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash -l {0}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.9]
+
+    steps:
+      - name: Set up env variable
+        run: |
+          echo "PROJ_DIR=py-sci-proj" >> $GITHUB_ENV
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: ${{ env.PROJ_DIR }}
+
+      # - name: Checkout Private Repo
+      #   uses: actions/checkout@v2
+      #   with:
+      #       ssh-key: ${{ secrets.PRIVATEREPOSECRET }}
+      #       ssh-strict: "false"
+      #       persist-credentials: false
+      #       repository: ORG/private-repo
+      #       path: private-repo-dir
+
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: 3.9
+          channels: conda-forge,defaults
+          channel-priority: strict
+          show-channel-urls: true
+
+      - name: Update pip/wheel infrastructure
+        run: |
+          conda install -y -q pip wheel
+
+      - name: Install conda packages (optional)
+        run: |
+          conda install -y -q mpi4py
+
+      - name: Install pytest packages
+        run: |
+          cd ${{ github.workspace }}/${{ env.PROJ_DIR }}
+          pip install -e ".[tests]"
+
+      - name: Build and install
+        run: |
+          # cd ${{ github.workspace }}/private-repo-dir
+          # pip install -v .
+          cd ${{ github.workspace }}/${{ env.PROJ_DIR }}
+          pip install -v .
+
+      # "-r char" show extra test info for some tests, A - all
+      # "-n auto" to use as many processes as your computer has CPU cores
+      - name: Run tests
+        run: |
+          cd ${{ github.workspace }}/${{ env.PROJ_DIR }}
+          pytest -r A -v --open-files
