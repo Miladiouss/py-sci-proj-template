@@ -1,0 +1,23 @@
+category_A:
+    run_interval:
+        name: Run Interval
+        value: 123
+        unit: s
+        tags: [Execution, Training]
+        description: >
+            A made up parameter.
+    n_run:
+        name: Number of Runs
+        value: 10
+        unit: s
+        tags: [Training]
+        description: >
+            Another parameter
+category_B:
+    step_size:
+        name: Run Interval
+        value: 42
+        unit: cm
+        tags: [Physics, Motion]
+        description: >
+            A parameter in Category B.
