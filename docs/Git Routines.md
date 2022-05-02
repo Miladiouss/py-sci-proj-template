@@ -38,7 +38,7 @@ If needed, delete a local branch: `git branch -d <obsolete-branch>`
 
 Before making a pull request, consider following these steps. It ensures a clean git history and facilitates team work.
 
-Note: Use system terminal to execute the following commands. The interactive feature doesn't function properly in VS Code integrated terminal.
+Note: You may use the VS Code integrated terminal. Howevere, if it doesn't behave properly, use the system terminal instead.
 
 1. Ensure all changes are committed.
 2. Ensure that the local and remote repose are in sync.
